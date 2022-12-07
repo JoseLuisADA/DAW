@@ -59,21 +59,21 @@ Para crear un archivo .gitignore local, crea un archivo de texto y asígnale el 
 
 `#` es usado para agregar comentarios
 
-### Ejemplos :
+### Ejemplo de como se vería un documento .gitignore :
 
-#### Ignora archivos del sistema Mac : 
+#### #Ignora archivos del sistema Mac : 
 .DS_store
 
-#### Ignora la carpeta node_modules :
+#### #Ignora la carpeta node_modules :
 node_modules
 
-#### Ignora todos los archivos de texto :
+#### #Ignora todos los archivos de texto :
 *.txt
 
-#### Ignora los archivos relacionados a API keys :
+#### #Ignora los archivos relacionados a API keys :
 .env
 
-#### Ignora archivos de configuración SASS :
+#### #Ignora archivos de configuración SASS :
 .sass-cache
 
 
