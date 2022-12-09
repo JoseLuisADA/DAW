@@ -30,15 +30,15 @@ Existen muchas órdenes de git que nos sirven para realizar diferentes funcional
 
 `git init` Esto crea un subdirectorio nuevo llamado .git, el cual contiene todos los archivos necesarios del repositorio – un esqueleto de un repositorio de Git. Todavía no hay nada en tu proyecto que esté bajo seguimiento.
 
-`git fetch` Descarga los cambios realizados en el repositorio remoto. Comprueba el estado del repositorio local en comparación con el repositorio remoto.
+`git fetch` Descarga los cambios realizados en el repositorio online. Comprueba el estado del repositorio local en comparación con el repositorio online.
 
-`git merge` Impacta en la rama en la que te encuentras parado, los cambios realizados en la rama “nombre_rama”.
+`git merge` Impacta en la rama en la que te encuentras los cambios realizados.
 
 `git pull` Unifica los comandos fetch y merge en un único comando.
 
 `git commit` Confirma los cambios realizados. El “mensaje” generalmente se usa para asociar al commit una breve descripción de los cambios realizados.
 
-`git push` Sube la rama “nombre_rama” al servidor remoto.
+`git push` Sube la rama al servidor remoto.
 
 `git status` Muestra el estado actual de la rama, como los cambios que hay sin commitear.
 
