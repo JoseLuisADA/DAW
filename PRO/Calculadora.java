@@ -70,11 +70,12 @@ public class Calculadora {
         }  
     }
 
-    public static boolean comprobarJugada(int numeroJugador){
+    public static boolean comprobarJugada(int numeroJugador, int[][] numerosPartida, int ejeY, int ejeX){
        
         boolean sigueLasReglas;
 
-        if((numeroJugador > 9 || numeroJugador <= 0)){
+        if((numeroJugador > 9 || numeroJugador <= 0
+            )){
             System.out.println("Ingrese un número acorde a las reglas");
              sigueLasReglas = false;
         } else {
@@ -84,7 +85,7 @@ public class Calculadora {
         return sigueLasReglas;
     }
 
-    public static int turnoJugador1(){
+    public static int turnoJugador1(int[][] numerosPartida, int ejeY, int ejeX){
         boolean sigueLasReglas;
         int numeroJugador1;
         
@@ -93,15 +94,17 @@ public class Calculadora {
             System.out.println("Turno Jugador 1:");
             numeroJugador1 = capturarNumJugador();
 
-            sigueLasReglas = comprobarJugada(numeroJugador1);
+            sigueLasReglas = comprobarJugada(numeroJugador1, numerosPartida, ejeY, ejeX);
 
         }
         while(sigueLasReglas == false);
 
+        añadirNumeroEnArray(numerosPartida, numeroJugador1, ejeY, ejeX);
+
         return numeroJugador1;
     }
 
-    public static int turnoJugador2(){
+    public static int turnoJugador2(int[][] numerosPartida, int ejeY, int ejeX){
         
         boolean sigueLasReglas;
         int numeroJugador2;
@@ -112,9 +115,11 @@ public class Calculadora {
             numeroJugador2 = capturarNumJugador();
 
             sigueLasReglas = comprobarJugada(numeroJugador2);
-            
+
         }
         while(sigueLasReglas == false);
+
+        añadirNumeroEnArray(numerosPartida, numeroJugador2, ejeY, ejeX);
 
         return numeroJugador2;
     }
