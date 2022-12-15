@@ -35,8 +35,6 @@ public class Calculadora {
             if(ejeX == 4){
                 ejeX = 0;
                 ejeY++;
-            } else if(ejeY == 4){
-                break;
             }
 
             //TURNO JUGADOR 1 Y COMPROBACIÓN DE LA JUGADA 
@@ -73,7 +71,6 @@ public class Calculadora {
     public static int capturarNumJugador(){
         Scanner consola = new Scanner(System.in);
         int numeroJugador = consola.nextInt();
-        consola.close();
         return numeroJugador;
     }
 
@@ -94,17 +91,72 @@ public class Calculadora {
     }
 
     public static boolean comprobarJugada(int numeroJugador, int numeroOtroJugador, int[][] numerosPartida, int ejeY, int ejeX){
-        boolean sigueLasReglas;
+        
+        //DE BASE CONFIAMOS EN QUE SIGUE LAS REGLAS Y LE DOY TRUE
+        boolean sigueLasReglas = true;
 
+        //COMPROBACIÓN DE SI EL NÚMERO ESTA COMPRENDIDO ENTRE EL 1 Y EL 9
         if((numeroJugador > 9 || numeroJugador <= 0)){
 
-            System.out.println("Ingrese un número acorde a las reglas");
-             sigueLasReglas = false;
+            sigueLasReglas = false;
 
         } else {
             sigueLasReglas = true;
         }
 
+        //COMPROBACIÓN DE SI EL NÚMERO YA HA SIDO USADO
+        for(int ejeY2 = 0; ejeY2 < numerosPartida.length; ejeY2++){
+            for(int ejeX2 = 0; ejeX2 < numerosPartida.length; ejeX2++){
+            
+                if(numerosPartida[ejeY2][ejeX2] == numeroJugador && numeroJugador != 0){
+                    sigueLasReglas = false;
+                }
+            }
+        }
+
+        //COMPROBACIÓN DE SI EL NÚMERO ELEGIDO ES DE SU MISMA FILA O COLUMNA
+
+        if(numeroOtroJugador == 1){
+            if(numeroJugador == 8 || numeroJugador == 9 || numeroJugador == 5 || numeroJugador == 6){
+                sigueLasReglas = false;
+            }
+        } else if(numeroOtroJugador == 2){
+            if(numeroJugador == 4 || numeroJugador == 7 || numeroJugador == 6 || numeroJugador == 9){
+                sigueLasReglas = false;
+            }
+        } else if(numeroOtroJugador == 3){
+            if(numeroJugador == 7 || numeroJugador == 8 || numeroJugador == 4 || numeroJugador == 5){
+                sigueLasReglas = false;
+            }
+        } else if(numeroOtroJugador == 4){
+            if(numeroJugador == 8 || numeroJugador == 9 || numeroJugador == 2 || numeroJugador == 3 ){
+                sigueLasReglas = false;
+            }
+        } else if(numeroOtroJugador == 5){
+            if(numeroJugador == 1 || numeroJugador == 3 || numeroJugador == 7 || numeroJugador == 9){
+                sigueLasReglas = false;
+            }
+        } else if(numeroOtroJugador == 6){
+            if(numeroJugador == 1 || numeroJugador == 2 || numeroJugador == 7 || numeroJugador == 8){
+                sigueLasReglas = false;
+            }
+        } else if(numeroOtroJugador == 7){
+            if(numeroJugador == 2 || numeroJugador == 3 || numeroJugador == 5 || numeroJugador == 6){
+                sigueLasReglas = false;
+            }
+        } else if(numeroOtroJugador == 8){
+            if(numeroJugador == 1 || numeroJugador == 4 || numeroJugador == 3 || numeroJugador == 6){
+                sigueLasReglas = false;
+            }
+        } else if(numeroOtroJugador == 9){
+            if(numeroJugador == 1 || numeroJugador == 2 || numeroJugador == 4 || numeroJugador == 5){
+                sigueLasReglas = false;
+            }
+        }
+
+        if(sigueLasReglas == false){
+            System.out.println("Ingrese un número acorde a las reglas");
+        }
 
         return sigueLasReglas;
     }
@@ -143,6 +195,8 @@ public class Calculadora {
 
         }
         while(sigueLasReglas == false);
+
+        numerosPartida[ejeY][ejeX] = numeroJugador2;
 
         return numeroJugador2;
     }
