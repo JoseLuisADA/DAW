@@ -6,10 +6,10 @@ public class Calculadora {
 
         //VARIABLES DEL JUEGO
 
-        int[][] numerosDisponibles = {
-            {7,8,9},
-            {6,5,4},
-            {3,2,1}
+        String[][] numerosDisponibles = {
+            {"7","8","9"},
+            {"6","5","4"},
+            {"3","2","1"}
         };
 
         int[][] numerosUsadosPartida = new int[3][3];
@@ -111,6 +111,14 @@ public class Calculadora {
         }  
     }
 
+    public static void mostrarNumerosAUsar(String[][] numerosDisponibles, int[][] numerosUsadosPartida){
+        for(int ejeY3 = 0; ejeY3 < numerosUsadosPartida.length; ejeY3++){
+            for(int ejeX3 = 0; ejeX3 < numerosUsadosPartida.length; ejeX3++){
+
+            }
+        }
+    }
+
     public static boolean comprobarJugada(int numeroJugador, int numeroOtroJugador, int[][] numerosUsadosPartida, int ejeY, int ejeX){
         
         //DE BASE CONFIAMOS EN QUE SIGUE LAS REGLAS Y LE DOY TRUE xD
@@ -138,6 +146,9 @@ public class Calculadora {
         //COMPROBACIÓN DE SI EL NÚMERO ELEGIDO ES DE SU MISMA FILA O COLUMNA
 
         if(numeroOtroJugador == 1){
+            
+            
+
             if(numeroJugador == 8 || numeroJugador == 9 || numeroJugador == 5 || numeroJugador == 6){
                 sigueLasReglas = false;
 
