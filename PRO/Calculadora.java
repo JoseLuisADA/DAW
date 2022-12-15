@@ -6,9 +6,13 @@ public class Calculadora {
 
         //VARIABLES DEL JUEGO
 
+       int numeroJugador1 = 0;
+       int numeroJugador2 = 0;
+
+       int ejeY = 0;
+       int ejeX = 0;
+
         int[][] numerosPartida = new int[3][3];
-        int ejeY = 0;
-        int ejeX = 0;
 
         boolean vidaJugador1 = true;
         boolean vidaJugador2 = true;
@@ -26,15 +30,33 @@ public class Calculadora {
         
         do{
 
+            //ALGORITMO EJE Y, EJE X
+
+            if(ejeX == 4){
+                ejeX = 0;
+                ejeY++;
+            } else if(ejeY == 4){
+                break;
+            }
+
             //TURNO JUGADOR 1 Y COMPROBACIÓN DE LA JUGADA 
-            totalCalculadora += turnoJugador1();
+            
+            numeroJugador1 = turnoJugador1(numerosPartida, numeroJugador2, ejeY, ejeX);
+            ejeX++;
+
+            totalCalculadora += numeroJugador1;
 
             //MOSTRAR EL TOTAL DE LA CALCULADORA Y COMPROBAR SI SE HA PASADO EL JUGADOR
             vidaJugador1 = comprobarTotalCalculadora(totalCalculadora);
 
-            //TURNO JUGADOR 2 Y COMPROBACIÓN DE LA JUGADA
             
-            totalCalculadora += turnoJugador2();
+
+            //TURNO JUGADOR 2 Y COMPROBACIÓN DE LA JUGADA
+
+            numeroJugador2 = turnoJugador2(numerosPartida, numeroJugador1, ejeY, ejeX);
+            ejeX++;
+
+            totalCalculadora += numeroJugador2;
 
             //MOSTRAR EL TOTAL DE LA CALCULADORA Y COMPROBAR SI SE HA PASADO EL JUGADOR
             vidaJugador2 = comprobarTotalCalculadora(totalCalculadora);
@@ -51,6 +73,7 @@ public class Calculadora {
     public static int capturarNumJugador(){
         Scanner consola = new Scanner(System.in);
         int numeroJugador = consola.nextInt();
+        consola.close();
         return numeroJugador;
     }
 
@@ -70,22 +93,24 @@ public class Calculadora {
         }  
     }
 
-    public static boolean comprobarJugada(int numeroJugador, int[][] numerosPartida, int ejeY, int ejeX){
-       
+    public static boolean comprobarJugada(int numeroJugador, int numeroOtroJugador, int[][] numerosPartida, int ejeY, int ejeX){
         boolean sigueLasReglas;
 
-        if((numeroJugador > 9 || numeroJugador <= 0
-            )){
+        if((numeroJugador > 9 || numeroJugador <= 0)){
+
             System.out.println("Ingrese un número acorde a las reglas");
              sigueLasReglas = false;
+
         } else {
             sigueLasReglas = true;
         }
 
+
         return sigueLasReglas;
     }
 
-    public static int turnoJugador1(int[][] numerosPartida, int ejeY, int ejeX){
+    public static int turnoJugador1(int[][] numerosPartida, int numeroOtroJugador, int ejeY, int ejeX){
+        
         boolean sigueLasReglas;
         int numeroJugador1;
         
@@ -94,17 +119,17 @@ public class Calculadora {
             System.out.println("Turno Jugador 1:");
             numeroJugador1 = capturarNumJugador();
 
-            sigueLasReglas = comprobarJugada(numeroJugador1, numerosPartida, ejeY, ejeX);
+            sigueLasReglas = comprobarJugada(numeroJugador1, numeroOtroJugador, numerosPartida, ejeY, ejeX);
 
         }
         while(sigueLasReglas == false);
 
-        añadirNumeroEnArray(numerosPartida, numeroJugador1, ejeY, ejeX);
+        numerosPartida[ejeY][ejeX] = numeroJugador1;
 
         return numeroJugador1;
     }
 
-    public static int turnoJugador2(int[][] numerosPartida, int ejeY, int ejeX){
+    public static int turnoJugador2(int[][] numerosPartida, int numeroOtroJugador, int ejeY, int ejeX){
         
         boolean sigueLasReglas;
         int numeroJugador2;
@@ -114,12 +139,10 @@ public class Calculadora {
             System.out.println("Turno Jugador 2:");
             numeroJugador2 = capturarNumJugador();
 
-            sigueLasReglas = comprobarJugada(numeroJugador2);
+            sigueLasReglas = comprobarJugada(numeroJugador2, numeroOtroJugador, numerosPartida, ejeY, ejeX);
 
         }
         while(sigueLasReglas == false);
-
-        añadirNumeroEnArray(numerosPartida, numeroJugador2, ejeY, ejeX);
 
         return numeroJugador2;
     }
@@ -132,7 +155,4 @@ public class Calculadora {
         }
     }
 
-    public static void añadirNumeroEnArray(int[][] numerosPartida, int numeroJugador, int ejeY, int ejeX){
-        numerosPartida[ejeY][ejeX] = numeroJugador;
-    }
 }
