@@ -1,0 +1,215 @@
+[
+    {
+        "id": "f6f2187d.f17ca8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "3cc11d24.ff01a2",
+        "type": "comment",
+        "z": "f6f2187d.f17ca8",
+        "name": "WARNING: please check you have started this container with a volume that is mounted to /data\\n otherwise any flow changes are lost when you redeploy or upgrade the container\\n (e.g. upgrade to a more recent node-red docker image).\\n  If you are using named volumes you can ignore this warning.\\n Double click or see info side panel to learn how to start Node-RED in Docker to save your work",
+        "info": "\nTo start docker with a bind mount volume (-v option), for example:\n\n```\ndocker run -it -p 1880:1880 -v /home/user/node_red_data:/data --name mynodered nodered/node-red\n```\n\nwhere `/home/user/node_red_data` is a directory on your host machine where you want to store your flows.\n\nIf you do not do this then you can experiment and redploy flows, but if you restart or upgrade the container the flows will be disconnected and lost. \n\nThey will still exist in a hidden data volume, which can be recovered using standard docker techniques, but that is much more complex than just starting with a named volume as described above.",
+        "x": 350,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "a37d25066645d280",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "Logica Juego",
+        "func": "let jugadas = [\"tijeras\", \"papel\", \"piedra\"];\n\nlet numeroRandom = Math.floor(Math.random() * 3);\n\nmsg.jugadaMaquina = jugadas[numeroRandom];\n\n\nif (msg.jugador === \"papel\" && msg.jugadaMaquina === \"papel\") {\n    msg.resultadoPartida = \"Ha sido un empate\";\n\n} else if (msg.jugador === \"piedra\" && msg.jugadaMaquina === \"papel\") {\n    msg.resultadoPartida = \"Has perdido\";\n\n} else if (msg.jugador === \"tijeras\" && msg.jugadaMaquina === \"papel\") {\n    msg.resultadoPartida = \"Has ganado\";\n\n} else if (msg.jugador === \"papel\" && msg.jugadaMaquina === \"piedra\") {\n    msg.resultadoPartida = \"Has ganado\";\n\n} else if (msg.jugador === \"piedra\" && msg.jugadaMaquina === \"piedra\") {\n    msg.resultadoPartida = \"Ha sido un empate\";\n\n} else if (msg.jugador === \"tijeras\" && msg.jugadaMaquina === \"piedra\") {\n    msg.resultadoPartida = \"Has perdido\";\n\n} else if (msg.jugador === \"papel\" && msg.jugadaMaquina === \"tijeras\") {\n    msg.resultadoPartida = \"Has perdido\";\n\n} else if (msg.jugador === \"piedra\" && msg.jugadaMaquina === \"tijeras\") {\n    msg.resultadoPartida = \"Has ganado\";\n\n} else if (msg.jugador === \"tijeras\" && msg.jugadaMaquina === \"tijeras\") {\n    msg.resultadoPartida = \"Ha sido un empate\";\n\n}\n\nmsg.payload = msg.resultadoPartida || 'Review this code :(';\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 540,
+        "wires": [
+            [
+                "598ef37ff7a9141c",
+                "c39c748b7c59914d",
+                "4d3e9507dac4f833",
+                "68e37415e0641005"
+            ]
+        ]
+    },
+    {
+        "id": "c39c748b7c59914d",
+        "type": "http response",
+        "z": "f6f2187d.f17ca8",
+        "name": "HTTP Resultado Partida",
+        "statusCode": "200",
+        "headers": {},
+        "x": 830,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "dda0503ce73945b7",
+        "type": "http in",
+        "z": "f6f2187d.f17ca8",
+        "name": "Piedra",
+        "url": "/piedra",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 190,
+        "y": 440,
+        "wires": [
+            [
+                "159e57c906255570"
+            ]
+        ]
+    },
+    {
+        "id": "88d2c9c459695384",
+        "type": "http in",
+        "z": "f6f2187d.f17ca8",
+        "name": "Papel",
+        "url": "/papel",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 190,
+        "y": 540,
+        "wires": [
+            [
+                "397230ce79c02371"
+            ]
+        ]
+    },
+    {
+        "id": "0759eeb14d21df2f",
+        "type": "http in",
+        "z": "f6f2187d.f17ca8",
+        "name": "Tijeras",
+        "url": "/tijeras",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 190,
+        "y": 640,
+        "wires": [
+            [
+                "d9c7af9f613de01e"
+            ]
+        ]
+    },
+    {
+        "id": "598ef37ff7a9141c",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "Resultado Partida Consola",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "159e57c906255570",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "Piedra",
+        "func": "msg.jugador = \"piedra\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 440,
+        "wires": [
+            [
+                "a37d25066645d280"
+            ]
+        ]
+    },
+    {
+        "id": "397230ce79c02371",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "Papel",
+        "func": "msg.jugador = \"papel\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 540,
+        "wires": [
+            [
+                "a37d25066645d280"
+            ]
+        ]
+    },
+    {
+        "id": "d9c7af9f613de01e",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "Tijeras",
+        "func": "msg.jugador = \"tijeras\";\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 640,
+        "wires": [
+            [
+                "a37d25066645d280"
+            ]
+        ]
+    },
+    {
+        "id": "4d3e9507dac4f833",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "Elección Máquina",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "jugadaMaquina",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "68e37415e0641005",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "Elección jugador",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "jugador",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 300,
+        "wires": []
+    }
+]
