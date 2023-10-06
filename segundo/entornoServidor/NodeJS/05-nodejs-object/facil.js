@@ -8,10 +8,12 @@ function toArray(obj) {
 
 function keysAndValues(obj) {
 	
+	let obj2 = Object.keys(obj)
+	let obj3 = Object.values(obj)
+	let obj4 = [];
+
+	obj4.push(obj2);
+	obj4.push(obj3);
+
+	return obj4;
 }
-
-
-let obj = {nombre: "Jose", apellidos: "Luis"}
-let obj2 = {nombre: "Luzuriaga", apellidos: "Alanis"}
-
-console.log(Object.keys(obj).concat(Object.values(obj2)))
