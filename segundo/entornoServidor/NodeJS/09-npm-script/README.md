@@ -17,7 +17,8 @@
     "borrar": "node -e \"const fs = require('fs'), path = require('path'); function deleteFolderRecursive(p) { if (fs.existsSync(p)) { fs.readdirSync(p).forEach((file, index) => { const curPath = path.join(p, file); if (fs.lstatSync(curPath).isDirectory()) { deleteFolderRecursive(curPath); } else { fs.unlinkSync(curPath); } }); fs.rmdirSync(p); } } deleteFolderRecursive('files');\"",
     "borrar:js": "node -e \"const fs = require('fs'), path = require('path'); const dir = 'files'; fs.readdirSync(dir).forEach(file => { if (path.extname(file) === '.js') { fs.unlinkSync(path.join(dir, file)); } });\"",
     "imprimir:azul": "node --input-type=module -e \"import chalk from 'chalk'; console.log(chalk.blue(process.argv[1]));\"",
-    "imprimir:rojo": "node --input-type=module -e \"import chalk from 'chalk'; console.log(chalk.red(process.argv[1]));\""
+    "imprimir:rojo": "node --input-type=module -e \"import chalk from 'chalk'; console.log(chalk.red(process.argv[1]));\"",
+    "imprimir:verde": "node --input-type=module -e \"import chalk from 'chalk'; console.log(chalk.green(process.argv[1]));\""
   },
   "keywords": [],
   "author": "",
