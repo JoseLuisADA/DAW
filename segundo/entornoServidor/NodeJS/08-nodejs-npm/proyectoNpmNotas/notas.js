@@ -1,43 +1,35 @@
 import * as fs from 'node:fs';
 import * as readline from 'node:readline';
 
-/*
-2. Crear un editor de notas con Nodejs
-
-• Tendrá un menú que permita:
-
-1. Crear nueva nota
-2. Editar nota existente
-3. Eliminar nota
-• Cada nota será un fichero de texto, con extensión .note
-• Para editar una nota, habrá que imprimir la lista de notas disponibles y seleccionar una
-• Cuando se está escribiendo una nota, ha de permitir continuar su edición hasta introducir dos
-veces seguidas una linea en blanco.
-*/
-
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
 
-function showMenu() {
-    rl.question('1. Crear nueva nota\n2. Editar nota existente\n3. Eliminar nota\nSelecciona una opción: ', (option) => {
-        switch(option) {
-            case '1':
-                createNote();
-                break;
-            case '2':
-                editNote();
-                break;
-            case '3':
-                deleteNote();
-                break;
-            default:
-                console.log('Opción no válida');
-                showMenu();
-                break;
-        }
-    });
+function showMenu(initialOption) {
+    if (initialOption) {
+        processOption(initialOption);
+    } else {
+        rl.question('1. Crear nueva nota\n2. Editar nota existente\n3. Eliminar nota\nSelecciona una opción: ', processOption);
+    }
+}
+
+function processOption(option) {
+    switch(option) {
+        case '1':
+            createNote();
+            break;
+        case '2':
+            editNote();
+            break;
+        case '3':
+            deleteNote();
+            break;
+        default:
+            console.log('Opción no válida');
+            showMenu();
+            break;
+    }
 }
 
 function createNote() {
@@ -129,4 +121,4 @@ function deleteNote() {
     });
 }
 
-showMenu();
+showMenu(process.argv[2]);

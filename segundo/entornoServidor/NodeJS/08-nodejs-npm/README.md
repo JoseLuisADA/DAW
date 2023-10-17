@@ -47,4 +47,9 @@ eslint es para corregir el código (tabulaciones, puntos y coma faltantes)
 
 axios es para hacer peticiones a APIS
 
-para ejecutar un proyecto node : node (nombreArchivo.js)
+para ejecutar un proyecto node es  node (nombreArchivo.js)
+
+para ejecutar un script que hemos creado en el package.json, hay que poner en la terminal npm run (nombreScript)
+
+para ejecutar el script start o test, no es necesario poner run, directamente valdría npm start o npm test
+
