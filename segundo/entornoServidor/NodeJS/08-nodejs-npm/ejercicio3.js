@@ -12,10 +12,10 @@ function fechaHoraActualFormateada() {
     const segundos = String(ahora.getSeconds()).padStart(2, '0');
 
     // Colorear en verde si los segundos son multiplos de 10 o se pongan en 0
-    let fechaFormateada = `${dia}-${mes}-${anio} `; 
-    fechaFormateada += segundos.includes('0') 
-        ? chalk.green(`${horas}:${minutos}:${segundos}`) 
-        : `${horas}:${minutos}:${segundos}`;
+    let fechaFormateada = `${dia}`; 
+    fechaFormateada += segundos.charAt('1').includes(0) 
+        ? chalk.green(`-${mes}-${anio} ${horas}:${minutos}:${segundos}`) 
+        : `-${mes}-${anio} ${horas}:${minutos}:${segundos}`;
 
     console.clear(); // Limpiar la consola para que se vea solo la fecha actualizada
    
