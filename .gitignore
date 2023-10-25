@@ -1,2 +1,4 @@
 node_modules
 segundo/entornoServidor/NodeJS/07-nodejs-advanced/asyncFetchAwait.js
+coverage
+.nyc_output
