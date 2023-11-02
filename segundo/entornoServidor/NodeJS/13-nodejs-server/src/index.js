@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import http from 'http';
 import { routes, defaultRoute } from './server/routes.js';
 
