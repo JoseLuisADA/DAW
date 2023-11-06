@@ -1,11 +1,5 @@
-import { sum } from '../src/sum.js';
-
-test('1 + 1 = 2', () => {
-    const result = sum(1, 1);
-    expect(result).toBe(2);
-});
-
-const fizzBuzz = require('../src/fizzbuzz');
+import test from 'ava';
+import fizzBuzz from '../src/fizzbuzz.js';
 
 test('Should return 1', t => {
     const result = fizzBuzz(1);

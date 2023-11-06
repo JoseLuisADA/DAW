@@ -6,4 +6,4 @@ function fizzBuzz(n) {
     return result || n;
 }
 
-module.exports = fizzBuzz;
+export default fizzBuzz;
