@@ -1,4 +1,5 @@
-import sonarqubeScanner from sonarqube-scanner;
+import sonarqubeScanner from 'sonarqube-scanner';
+
 sonarqubeScanner({
     serverUrl: 'http://localhost:9000',
     options: {
@@ -8,6 +9,6 @@ sonarqubeScanner({
         'sonar.coverage.exclusions': 'src/**/index.js',
         'sonar.javascript.lcov.reportPaths': 'coverage/lcov.info',
         'sonar.login': 'admin',
-        'sonar.password': 'adminadmin',
+        'sonar.password': 'admin2',
     },
 }, () => { });
