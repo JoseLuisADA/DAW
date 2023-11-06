@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable no-unreachable-loop */
 /* eslint-disable linebreak-style */
 import url from 'url';
@@ -9,7 +10,7 @@ export const routes = {
   html: controllers.htmlController,
   page: controllers.pageController,
   error: controllers.errorController,
-  fizzbuzz: controllers.fizzbuzzController, //NO ENCUENTRA LA RUTA DE FIZZBUZZ
+  fizzbuzz: controllers.fizzbuzzController, // NO ENCUENTRA LA RUTA DE FIZZBUZZ
   notFound: controllers.notFoundController,
 };
 

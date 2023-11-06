@@ -49,28 +49,31 @@ export function errorController(req, res) {
 
 export function fizzbuzzController(req, res) {
   const parsedUrl = url.parse(req.url, true);
-  const { number } = parsedUrl.query;
+  const path = parsedUrl.pathname;
+  const { query } = parsedUrl;
 
-  if (number) {
-    const results = [];
+  if (path === '/fizzbuzz' && query.number) {
+    const number = parseInt(query.number, 10);
+    if (Number.isNaN(number)) {
+      res.writeHead(400, { 'Content-Type': 'text/plain' });
+      return res.end('El dato introducido no es un numero, introducir un numero');
+    }
+
+    let result = '';
 
     for (let i = 1; i <= number; i += 1) {
-      if (i % 3 === 0 && i % 5 === 0) {
-        results.push('FizzBuzz');
-      } else if (i % 3 === 0) {
-        results.push('Fizz');
-      } else if (i % 5 === 0) {
-        results.push('Buzz');
-      } else {
-        results.push(i.toString());
-      }
+      let output = '';
+      if (i % 3 === 0) output += 'Fizz';
+      if (i % 5 === 0) output += 'Buzz';
+      if (output === '') output = i.toString();
+
+      result += (i > 1 ? ', ' : '') + output;
     }
-    const Finalresults = results.join('\n');
     res.writeHead(200, { 'Content-Type': 'text/plain' });
-    return res.end(Finalresults);
+    return res.end(result);
   }
-  res.writeHead(400, { 'Content-Type': 'text/plain' }); //NO ENCUENTRA LA RUTA DE FIZZBUZZ
-  return res.end('Introduce un número en la query');
+  res.writeHead(400, { 'Content-Type': 'text/plain' });
+  return res.end('Introduce un numero');
 }
 
 export function notFoundController(req, res) {
