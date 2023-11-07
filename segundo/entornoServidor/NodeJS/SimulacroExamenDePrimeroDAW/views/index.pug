@@ -1,0 +1,27 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Juego de la Oca
+    link(rel="stylesheet", href="/styles/styles.css")
+    script(defer, src="/javascripts/main.js" type="module")
+  body
+    header
+      h1 Juego de la Oca
+
+    main
+      #board
+        - for (var i = 1; i <= 63; i++)
+          .space(id=`space-${i}`) #{i}
+
+    #players
+      .player#player1
+      .player#player2
+
+    #gameControls
+      button#rollDiceBtn Lanzar dado
+
+    footer
+      p Realizado ÚNICA E INEQUIVOCAMENTE por Jose Luis &copy; #{new Date().getFullYear()}
+

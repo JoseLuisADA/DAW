@@ -3,3 +3,5 @@ segundo/entornoServidor/NodeJS/07-nodejs-advanced/asyncFetchAwait.js
 coverage
 .nyc_output
 .vscode
+.editorconfig
+.eslintrc.js
