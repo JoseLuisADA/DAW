@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Fetch Example</title>
+</head>
+<body>
+    <script>
+        fetch('http://localhost:3000/body', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                clave1: 'valor1',
+                clave2: 'valor2'
+            })
+        })
+        .then(response => response.text())
+        .then(html => {
+            // Aquí puedes hacer lo que quieras con el HTML recibido
+            document.body.innerHTML = html; // Esto mostrará la respuesta HTML en el cuerpo del documento
+        })
+        .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>
