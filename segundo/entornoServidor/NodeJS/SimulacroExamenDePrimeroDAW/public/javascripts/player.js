@@ -16,6 +16,7 @@ class Player {
     const specialRules = {
       6: { type: 'bridge', moveTo: 12 },
       19: { type: 'inn', waitTurns: 2 },
+      masde64: { type: 'masde64', waitTurns: 2 },
       // ... más reglas especiales ...
     };
 

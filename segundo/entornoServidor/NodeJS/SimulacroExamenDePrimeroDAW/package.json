@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon --experimental-modules bin/www.js"
+    "start": "nodemon app.js"
   },
   "type": "module",
   "dependencies": {
