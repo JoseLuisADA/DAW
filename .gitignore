@@ -5,3 +5,5 @@ coverage
 .vscode
 .editorconfig
 .eslintrc.js
+.env*
+!.env.template
