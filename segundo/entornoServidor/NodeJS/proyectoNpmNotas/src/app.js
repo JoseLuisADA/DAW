@@ -1,8 +1,8 @@
 import express from 'express';
-import loaders from './loaders/express-loader.js';
+import * as loader from './loaders/index.js';
 
 const server = express();
 
-loaders.init(server);
+loader.init(server);
 
 export default server;

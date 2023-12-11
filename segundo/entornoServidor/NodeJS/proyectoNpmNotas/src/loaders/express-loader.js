@@ -6,7 +6,7 @@ import { errorMiddleware } from '../middlewares/error-middleware.js';
 
 export default function(server){
     /* Config */
-    server.use(cors());
+    //server.use(cors());
     server.use(express.json());
     server.use(express.urlencoded({ extended: true}));
     /* Routes */
