@@ -5,7 +5,7 @@ import logger from './utils/logger.js';
 const app = express();
 app.use(express.json());
 
-app.use('/api', notesRouter);
+app.use('/notes', notesRouter);
 
 app.use((err, req, res, next) => {
   logger.error(err.stack);

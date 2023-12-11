@@ -3,6 +3,7 @@ import path from 'path';
 import Note from '../models/noteModel.js';
 
 const notesController = {
+
   createNote: (title, content) => {
     const note = new Note(title, content);
     fs.writeFileSync(`${title}.note`, note.content);
@@ -10,8 +11,12 @@ const notesController = {
 
   readNote: (title) => {
     const notesDirectory = path.join('./notes');
-    const filePath = path.join(notesDirectory, `${title}.note`);
-    return fs.readFileSync(filePath, 'utf-8');
+    try{
+      const filePath = path.join(notesDirectory, `${title}.note`);
+      return fs.readFileSync(filePath, 'utf-8');
+    } catch(error){
+      return 'El archivo especificado no existe.'
+    }
   },
 
   updateNote: (title, newContent) => {
@@ -32,7 +37,8 @@ const notesController = {
       console.log(error);
       return 'Ha ocurrido un error';
     }
-  },
+  }
+
 };
 
 export default notesController;
