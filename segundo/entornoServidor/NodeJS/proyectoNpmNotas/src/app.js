@@ -1,18 +1,8 @@
 import express from 'express';
-import notesRouter from './routes/notesRoutes.js';
-import logger from './utils/logger.js';
+import loaders from './loaders/express-loader.js';
 
-const app = express();
-app.use(express.json());
+const server = express();
 
-app.use('/notes', notesRouter);
+loaders.init(server);
 
-app.use((err, req, res, next) => {
-  logger.error(err.stack);
-  res.status(500).send('Something broke!');
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+export default server;
