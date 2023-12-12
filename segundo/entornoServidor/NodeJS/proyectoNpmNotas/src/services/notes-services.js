@@ -4,7 +4,7 @@ import Nota from "../models/notaModelo.js";
 
 export function crearNota(nombreArchivo, contenido) {
     const nota = new Nota(nombreArchivo, contenido);
-    const filePath = path.join("./notas", `${nombreArchivo}.note`);
+    const filePath = path.join("./notas", `${nota.nombreArchivo}.note`);
     fs.writeFileSync(filePath, nota.contenido);
 }
 
@@ -14,15 +14,17 @@ export function leerNota(nombreArchivo) {
     return fs.readFileSync(notaPath, "utf-8");
 }
 
-export function actualizarNota(nombreArchivo, contenido) {    
-    fs.writeFileSync(`${nombreArchivo}.note`, contenido);
+export function actualizarNota(nombreArchivo, contenido) {
+    const filePath = path.join("./notas", `${nombreArchivo}.note`);    
+    fs.writeFileSync(filePath, contenido);
 }
 
-export function borrarNotas(nombreArchivo) {
-    fs.unlinkSync(`${nombreArchivo}.note`);
+export function borrarNota(nombreArchivo) {
+    const filePath = path.join("./notas", `${nombreArchivo}.note`);    
+    fs.unlinkSync(filePath);
 }
 
-export function listarNotas(req, res) {
+export function listarNotas() {
     const directorioNotas = path.resolve("./notas");
     const archivos = fs.readdirSync(directorioNotas);
     const notas = archivos.filter((file) => file.endsWith(".note"));
