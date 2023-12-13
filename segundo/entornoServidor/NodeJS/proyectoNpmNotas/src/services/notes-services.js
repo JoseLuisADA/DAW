@@ -15,13 +15,24 @@ export function leerNota(nombreArchivo) {
 }
 
 export function actualizarNota(nombreArchivo, contenido) {
-    const filePath = path.join("./notas", `${nombreArchivo}.note`);    
-    fs.writeFileSync(filePath, contenido);
+    const filePath = path.join("./notas", `${nombreArchivo}.note`);  
+
+    if (fs.existsSync(filePath)) {
+        fs.writeFileSync(filePath, contenido);
+    } else {
+        throw Error;
+    }
 }
 
 export function borrarNota(nombreArchivo) {
     const filePath = path.join("./notas", `${nombreArchivo}.note`);    
-    fs.unlinkSync(filePath);
+
+    if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath);
+    } else {
+        throw Error;
+    }
+
 }
 
 export function listarNotas() {

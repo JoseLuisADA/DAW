@@ -5,3 +5,27 @@
 {"code":"ENOENT","errno":-4058,"level":"error","path":"\\\\?\\C:\\Users\\selut\\Documents\\GitHub\\DAW\\segundo\\entornoServidor\\NodeJS\\proyectoNpmNotas\\notas\\Holaa.note","status":404,"syscall":"open"}
 {"code":"ENOENT","errno":-4058,"level":"error","path":"\\\\?\\C:\\Users\\selut\\Documents\\GitHub\\DAW\\segundo\\entornoServidor\\NodeJS\\proyectoNpmNotas\\notas\\Holaa.note","status":404,"syscall":"open"}
 {"code":"ENOENT","errno":-4058,"level":"error","path":"\\\\?\\C:\\Users\\selut\\Documents\\GitHub\\DAW\\segundo\\entornoServidor\\NodeJS\\proyectoNpmNotas\\notas\\Holaa.note","status":404,"syscall":"open"}
+{"code":"ERR_INVALID_ARG_TYPE","level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error","status":400}
+{"level":"error","status":400}
+{"level":"error","status":400}
+{"level":"error","status":400}
+{"level":"error","status":400}
+{"level":"error","status":400}
+{"level":"error","status":400}
+{"level":"error","status":400}
+{"level":"error","status":400}
+{"level":"error","status":400}
+{"level":"error","status":400}
+undefined
+undefined
+undefined
+{"body":"{\r\n  \"nombreArchivo\": \"lol\"\r\n  \"contenido\": \"admin123\"\r\n}\r\n","expose":true,"level":"error","status":400,"statusCode":400,"type":"entity.parse.failed"}
+undefined
+{"level":"error"}
+{"level":"error"}
+undefined
+undefined

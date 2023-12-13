@@ -1,18 +1,15 @@
-import jwt from 'jsonwebtoken';
-import bcrypt from 'bcrypt';
-import { adminCredentials } from '../utils/usuario.js';
+import servicioAuth from '../services/auth-services.js';
 
-export const login = async (req, res) => {
+export default async function login(req, res, next) {
+  
   const { username, password } = req.body;
-
-  if (username === adminCredentials.username) {
-    if (await bcrypt.compare(password, adminCredentials.passwordHash)) {
-      const token = jwt.sign({ username }, process.env.SECRET_KEY, { expiresIn: '24h' });
-      res.send(token);
-    } else {
-      res.status(401).send('Contraseña incorrecta');
-    }
-  } else {
-    res.status(404).send('Usuario no encontrado');
+  console.log(username, password);
+  try{
+    const mensaje = await servicioAuth(username, password);
+    res.send(mensaje);
+  } catch(error){
+    error.status = 400;
+    next(error);
   }
+
 };

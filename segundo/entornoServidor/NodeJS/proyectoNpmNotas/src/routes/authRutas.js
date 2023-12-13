@@ -1,9 +1,8 @@
-// authRoutes.js
 import express from 'express';
-import { login } from '../controllers/auth-controlador.js';
+import controladorAuth from '../controllers/auth-controlador.js';
 
 const router = express.Router();
 
-router.post('/', login);
+router.post('/', controladorAuth);
 
 export default router;

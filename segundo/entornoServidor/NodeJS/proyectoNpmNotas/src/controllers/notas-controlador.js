@@ -1,13 +1,25 @@
 import * as servicioNotas from "../services/notes-services.js";
 
-// PENDIENTE ENVIAR CODIGOS DE ESTADO ERRONEOS CORRECTOS EN CADA FUNCIÓN
-
   export function crearNota(req, res, next) {
     try{
-      servicioNotas.crearNota(req.body.nombreArchivo, req.body.contenido);
-      res.status(200).send("Nota creada");
+      if(req.body.nombreArchivo !== undefined && req.body.contenido !== undefined && req.body.nombreArchivo !== '' && req.body.contenido !== ''){
+        servicioNotas.crearNota(req.body.nombreArchivo, req.body.contenido);
+        res.status(200).send("Nota creada");
+      } else {
+        throw Error;
+      }
     } catch(error){
       console.log(error);
+      error.status = 400;
+      
+      if(!req.body.nombreArchivo && !req.body.contenido){
+        error.message = 'No se ha especificado ni el nombre de la nota ni su contenido'
+      } else if(!req.body.nombreArchivo){
+        error.message = 'No se ha especificado el nombre de la nota'
+      } else if(!req.body.contenido){
+        error.message = 'No se ha especificado el contenido de la nota'
+      }
+
       next(error);
     }
   }
@@ -19,7 +31,7 @@ import * as servicioNotas from "../services/notes-services.js";
       res.status(200).send(nota);
     } catch(error){
       error.status = 404;
-      error.message = `Note with name ${nombreArchivo} not found`
+      error.message = `La nota ${nombreArchivo} no ha sido encontrada`;
       next(error);
     }
   }
@@ -30,6 +42,8 @@ import * as servicioNotas from "../services/notes-services.js";
       res.status(200).send("Nota actualizada");
     } catch(error) {
       console.log(error);
+      error.status = 404;
+      error.message = `La nota ${req.body.nombreArchivo} no existe`;
       next(error);
     }
   }
@@ -40,6 +54,8 @@ import * as servicioNotas from "../services/notes-services.js";
       res.status(200).send("Nota borrada");
     } catch(error){
       console.log(error);
+      error.status = 404;
+      error.message = `La nota ${req.body.nombreArchivo} no existe`;
       next(error);
     }
   }
