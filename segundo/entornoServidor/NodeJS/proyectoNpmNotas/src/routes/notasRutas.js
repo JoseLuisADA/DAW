@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/', controladorNotas.listarNotas);
 router.get('/:nombreArchivo', controladorNotas.leerNota);
 router.post('/', controladorNotas.crearNota);
-router.put('/', controladorNotas.actualizarNota);
+router.put('/:nombreArchivo', controladorNotas.actualizarNota);
 router.delete('/:nombreArchivo', controladorNotas.borrarNota);
 
 export default router;

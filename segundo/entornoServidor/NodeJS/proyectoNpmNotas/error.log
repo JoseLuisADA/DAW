@@ -29,3 +29,14 @@ undefined
 {"level":"error"}
 undefined
 undefined
+{"level":"error","status":400}
+{"level":"error","status":400}
+{"code":"ENOENT","errno":-4058,"level":"error","path":"C:\\Users\\selut\\Documents\\GitHub\\DAW\\segundo\\entornoServidor\\NodeJS\\proyectoNpmNotas\\notas","syscall":"scandir"}
+{"code":"ENOENT","errno":-4058,"level":"error","path":"C:\\Users\\selut\\Documents\\GitHub\\DAW\\segundo\\entornoServidor\\NodeJS\\proyectoNpmNotas\\notas","syscall":"scandir"}
+{"code":"ENOENT","errno":-4058,"level":"error","path":"C:\\Users\\selut\\Documents\\GitHub\\DAW\\segundo\\entornoServidor\\NodeJS\\proyectoNpmNotas\\notas","syscall":"scandir"}
+{"code":"ENOENT","errno":-4058,"level":"error","path":"C:\\Users\\selut\\Documents\\GitHub\\DAW\\segundo\\entornoServidor\\NodeJS\\proyectoNpmNotas\\notas","syscall":"scandir"}
+{"code":"ENOENT","errno":-4058,"level":"error","path":"C:\\Users\\selut\\Documents\\GitHub\\DAW\\segundo\\entornoServidor\\NodeJS\\proyectoNpmNotas\\notas\\NombreNotaAqui.note","status":404,"syscall":"open"}
+undefined
+undefined
+{"level":"error","status":400}
+{"level":"error","status":400}

@@ -1,0 +1,161 @@
+swagger: '2.0'
+info:
+  description: Aplicación de notas
+  version: "1.0.0"
+  title: Notas
+
+host: localhost:3000
+basePath: /
+schemes:
+  - http
+
+paths:
+  /login:
+    post:
+      summary: Autenticación de usuario
+      description: Permite a un usuario autenticarse en la aplicación.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: Credenciales
+          description: Iniciar sesión
+          required: true
+          schema:
+            type: object
+            properties:
+              username:
+                type: string
+              password:
+                type: string
+      responses:
+        '200':
+          description: Autenticación exitosa
+        '401':
+          description: Credenciales inválidas
+
+  /notas:
+    get:
+      summary: Listar todas las notas
+      description: Recupera todas las notas disponibles.
+      produces:
+        - application/json
+      parameters:
+        - name: authorization
+          in: header
+          required: true
+          type: string
+          description: Token de acceso
+      responses:
+        '200':
+          description: Notas listadas exitosamente
+        '403':
+          description: Token incorrecto
+        '404':
+          description: No se encontraron notas
+
+    post:
+      summary: Crear una nueva nota
+      description: Permite la creación de una nueva nota.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: authorization
+          in: header
+          required: true
+          type: string
+          description: Token de acceso
+        - in: body
+          name: nota
+          description: Datos de la nueva nota
+          required: true
+          schema:
+            type: object
+            properties:
+              nombreArchivo:
+                type: string
+              contenido:
+                type: string
+      responses:
+        '201':
+          description: Nota creada exitosamente
+        '400':
+          description: Datos inválidos
+
+  /notas/{nombreArchivo}:
+    get:
+      summary: Leer una nota específica
+      description: Obtiene los detalles de una nota específica.
+      produces:
+        - application/json
+      parameters:
+        - name: authorization
+          in: header
+          required: true
+          type: string
+          description: Token de acceso
+        - name: nombreArchivo
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Nota encontrada
+        '404':
+          description: Nota no encontrada
+
+    put:
+      summary: Editar una nota existente
+      description: Permite editar una nota existente.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: authorization
+          in: header
+          required: true
+          type: string
+          description: Token de acceso
+        - name: nombreArchivo
+          in: path
+          required: true
+          type: string
+        - in: body
+          name: nota
+          required: true
+          schema:
+            type: object
+            properties:
+              contenido:
+                type: string
+      responses:
+        '200':
+          description: Nota actualizada exitosamente
+        '404':
+          description: Nota no encontrada
+
+    delete:
+      summary: Eliminar una nota
+      description: Permite la eliminación de una nota.
+      produces:
+        - application/json
+      parameters:
+        - name: authorization
+          in: header
+          required: true
+          type: string
+          description: Token de acceso
+        - name: nombreArchivo
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Nota eliminada exitosamente
+        '404':
+          description: Nota no encontrada

@@ -1,0 +1,170 @@
+{
+	"info": {
+		"_postman_id": "2b91663e-f932-4332-a631-09061c5835b8",
+		"name": "Proyecto Notas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31465747"
+	},
+	"item": [
+		{
+			"name": "API Notas",
+			"item": [
+				{
+					"name": "Listar notas",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/notas",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"notas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Leer nota",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/notas/NombreNotaAqui",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"notas",
+								"NombreNotaAqui"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear nota",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombreArchivo\": \"Nombre de la nota\",\r\n    \"contenido\": \"Contenido de la nota\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/notas",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"notas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar nota",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar nota",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GET TOKEN API NOTAS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

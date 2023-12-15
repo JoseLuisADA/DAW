@@ -38,12 +38,12 @@ import * as servicioNotas from "../services/notes-services.js";
 
   export function actualizarNota(req, res, next) { 
     try{
-      servicioNotas.actualizarNota(req.body.nombreArchivo, req.body.contenido);
+      servicioNotas.actualizarNota(req.params.nombreArchivo, req.body.contenido);
       res.status(200).send("Nota actualizada");
     } catch(error) {
       console.log(error);
       error.status = 404;
-      error.message = `La nota ${req.body.nombreArchivo} no existe`;
+      error.message = `La nota ${req.params.nombreArchivo} no existe`;
       next(error);
     }
   }
