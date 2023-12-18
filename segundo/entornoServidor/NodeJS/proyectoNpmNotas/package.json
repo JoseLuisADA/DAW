@@ -6,7 +6,10 @@
   "type": "module",
   "scripts": {
     "test": "jest",
-    "start": "nodemon"
+    "test-coverage": "jest --coverage",
+    "start": "nodemon",
+    "docker": "docker run --rm -e SONAR_HOST_URL=http://sonarqube:9000 -e SONAR_LOGIN=admin -v ./src/index.js sonarsource/sonar-scanner-cli",
+    "docker-up": "docker run --name sonarqube -p 9000:9000 -p 9092:9092 -v sonarqube_data:./"
   },
   "keywords": [],
   "author": "",
@@ -17,9 +20,21 @@
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
+    "lodash": "^4.17.21",
+    "lodash.isboolean": "^3.0.3",
+    "lodash.isinteger": "^4.0.4",
+    "lodash.isnumber": "^3.0.3",
+    "lodash.isplainobject": "^4.0.6",
+    "lodash.isstring": "^4.0.1",
+    "lodash.once": "^4.1.1",
+    "swagger-ui": "^5.10.5",
+    "swagger-ui-express": "^5.0.0",
     "winston": "^3.11.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.23.6",
+    "@babel/preset-env": "^7.23.6",
+    "babel-jest": "^29.7.0",
     "eslint": "^8.54.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.29.0",

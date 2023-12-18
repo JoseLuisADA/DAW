@@ -42,3 +42,26 @@ undefined
 undefined
 {"level":"error","status":400}
 {"level":"error","status":400}
+{"charset":"utf-8","level":"error","message":"unsupported charset \"UTF-8\"","type":"charset.unsupported"}
+{"charset":"utf-8","level":"error","message":"unsupported charset \"UTF-8\"","type":"charset.unsupported"}
+{"charset":"utf-8","level":"error","message":"unsupported charset \"UTF-8\"","type":"charset.unsupported"}
+{"charset":"utf-8","level":"error","message":"unsupported charset \"UTF-8\"","type":"charset.unsupported"}
+{"charset":"utf-8","level":"error","message":"unsupported charset \"UTF-8\"","type":"charset.unsupported"}
+{"code":"ENOENT","errno":-4058,"level":"error","path":"\\\\?\\C:\\Users\\selut\\Documents\\GitHub\\DAW\\segundo\\entornoServidor\\NodeJS\\proyectoNpmNotas\\notas\\NombreNotaAqui.note","status":404,"syscall":"open"}
+undefined
+undefined
+{"code":"ENOENT","errno":-4058,"level":"error","path":"\\\\?\\C:\\Users\\selut\\Documents\\GitHub\\DAW\\segundo\\entornoServidor\\NodeJS\\proyectoNpmNotas\\notas\\NombreNotaAqui.note","status":404,"syscall":"open"}
+undefined
+undefined
+{"code":"ENOENT","errno":-4058,"level":"error","path":"\\\\?\\C:\\Users\\selut\\Documents\\GitHub\\DAW\\segundo\\entornoServidor\\NodeJS\\proyectoNpmNotas\\notas\\NombreNotaAqui.note","status":404,"syscall":"open"}
+undefined
+undefined
+{"code":"ENOENT","errno":-4058,"level":"error","path":"\\\\?\\C:\\Users\\selut\\Documents\\GitHub\\DAW\\segundo\\entornoServidor\\NodeJS\\proyectoNpmNotas\\notas\\NombreNotaAqui.note","status":404,"syscall":"open"}
+undefined
+undefined
+{"code":"ENOENT","errno":-4058,"level":"error","path":"\\\\?\\C:\\Users\\selut\\Documents\\GitHub\\DAW\\segundo\\entornoServidor\\NodeJS\\proyectoNpmNotas\\notas\\NombreNotaAqui.note","status":404,"syscall":"open"}
+undefined
+undefined
+{"code":"ENOENT","errno":-4058,"level":"error","path":"\\\\?\\C:\\Users\\selut\\Documents\\GitHub\\DAW\\segundo\\entornoServidor\\NodeJS\\proyectoNpmNotas\\notas\\NombreNotaAqui.note","status":404,"syscall":"open"}
+{"code":"ENOENT","errno":-4058,"level":"error","path":"\\\\?\\C:\\Users\\selut\\Documents\\GitHub\\DAW\\segundo\\entornoServidor\\NodeJS\\proyectoNpmNotas\\notas\\NombreNotaAqui.note","status":404,"syscall":"open"}
+undefined

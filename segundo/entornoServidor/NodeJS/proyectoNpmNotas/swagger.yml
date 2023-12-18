@@ -108,7 +108,7 @@ paths:
         '404':
           description: Nota no encontrada
 
-    put:
+    patch:
       summary: Editar una nota existente
       description: Permite editar una nota existente.
       consumes:
